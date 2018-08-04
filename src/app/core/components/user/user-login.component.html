@@ -1,0 +1,35 @@
+<mat-card>
+  <div class="div-container">
+        <mat-toolbar>
+            <mat-toolbar-row *ngIf="formErrors">
+                {{errorMessage}}
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form class="example-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+          <p class="text-muted">LogIn</p>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" [formControl]="myForm.controls['username']">
+            <mat-error *ngIf="formErrors && !formErrors.username.valid">
+              {{formErrors.username.message}}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input type="password" matInput placeholder="Password" [formControl]="myForm.controls['password']">
+            <mat-error *ngIf="formErrors && !formErrors.password.valid">
+              {{formErrors.password.message}}
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-button type="submit"
+                  [disabled]="!myForm.valid || submitted == true">Login</button>
+          <i *ngIf="loading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+
+        </form>
+
+  </div>
+</mat-card>
+
+
+

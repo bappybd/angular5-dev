@@ -1,0 +1,27 @@
+<br>
+
+<button mat-button routerLink="/products/add">Add Products</button>
+
+<br>
+<mat-form-field class="search-form">
+    <input matInput placeholder="Search" type="text">
+</mat-form-field>
+
+<ul class="product-list" *ngIf="products">
+    <li *ngFor="let productItem of products | paginate: {id: 'pagination_product_listing',
+                    itemsPerPage: pagination.perPage,
+                    currentPage: pagination.currentPage,
+                    totalItems: pagination.totalCount
+                    }">
+        {{productItem.title}}
+    </li>
+</ul>
+
+<!-- Pagination -->
+
+<pagination-controls *ngIf="products" id="pagination_product_listing"
+                     maxSize="9"
+                     directionLinks="true"
+                     autoHide="true"
+                     (pageChange)="goToPage($event)"
+></pagination-controls>

@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>MyMaterial</span>
+
+    <span class="example-spacer"></span>
+    <button mat-button routerLink="products">Products</button>
+    <button mat-button routerLink="user/login" *ngIf="!auth.isLoggedIn()">Login</button>
+    <button mat-button routerLink="user" *ngIf="auth.isLoggedIn()">User</button>
+    <button mat-button routerLink="user/logout" *ngIf="auth.isLoggedIn()">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>
