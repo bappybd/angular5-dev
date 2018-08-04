@@ -1,0 +1,48 @@
+<mat-card>
+  <div class="div-container">
+        <mat-toolbar>
+            <mat-toolbar-row *ngIf="myForm.hasError()">
+                {{errorMessage}}
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <form class="example-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+          <p class="text-muted">Signup</p>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" [formControl]="myForm.controls['username']">
+            <mat-hint class="field-error" *ngIf="formErrors && !formErrors.username.valid">
+              {{formErrors.username.message}}
+            </mat-hint>
+          </mat-form-field><br>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email" [formControl]="myForm.controls['email']">
+                <mat-hint class="field-error" align="end" *ngIf="formErrors && !formErrors.email.valid">
+                    {{formErrors.email.message}}
+                </mat-hint>
+            </mat-form-field><br>
+          <mat-form-field class="example-full-width">
+            <input type="password" matInput placeholder="Password" [formControl]="myForm.controls['password']">
+            <mat-hint class="field-error" *ngIf="formErrors && !formErrors.password.valid">
+              {{formErrors.password.message}}
+            </mat-hint>
+          </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <input type="password" matInput placeholder="Confirm Password" [formControl]="myForm.controls['password_confirm']">
+                <mat-hint class="field-error" *ngIf="formErrors && !formErrors.password_confirm.valid">
+                    {{formErrors.password_confirm.message}}
+                </mat-hint>
+            </mat-form-field>
+            <br>
+          <button mat-raised-button color="primary" type="submit"
+                  [disabled]="!myForm.valid || submitted == true">Singup</button>
+          <i *ngIf="loading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+            or
+            <a routerLink="/user/login">Login</a>
+        </form>
+
+  </div>
+</mat-card>
+
+
+

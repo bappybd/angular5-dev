@@ -22,10 +22,11 @@
             </mat-error>
           </mat-form-field>
 
-          <button mat-button type="submit"
+          <button mat-raised-button color="primary" type="submit"
                   [disabled]="!myForm.valid || submitted == true">Login</button>
           <i *ngIf="loading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
-
+            or
+            <a routerLink="/user/signup">Signup</a>
         </form>
 
   </div>

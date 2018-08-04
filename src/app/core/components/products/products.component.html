@@ -1,27 +1,53 @@
 <br>
+<button mat-raised-button color="primary" routerLink="/products/add">
+    Add Products
+</button>
+<mat-card>
+    <div class="div-container">
 
-<button mat-button routerLink="/products/add">Add Products</button>
+        <br>
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
 
-<br>
-<mat-form-field class="search-form">
-    <input matInput placeholder="Search" type="text">
-</mat-form-field>
+        <div class="mat-elevation-z8">
+            <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef> ProductID </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
 
-<ul class="product-list" *ngIf="products">
-    <li *ngFor="let productItem of products | paginate: {id: 'pagination_product_listing',
-                    itemsPerPage: pagination.perPage,
-                    currentPage: pagination.currentPage,
-                    totalItems: pagination.totalCount
-                    }">
-        {{productItem.title}}
-    </li>
-</ul>
+                <!-- Name Column -->
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef> Product Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+                </ng-container>
 
-<!-- Pagination -->
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
 
-<pagination-controls *ngIf="products" id="pagination_product_listing"
-                     maxSize="9"
-                     directionLinks="true"
-                     autoHide="true"
-                     (pageChange)="goToPage($event)"
-></pagination-controls>
+            <!-- Pagination -->
+            <mat-paginator  [length]="pagination.totalCount"
+                            [hidePageSize]="true"
+                            [showFirstLastButtons]="true"
+                            [pageSize]="pagination.perPage"
+                            [pageSizeOptions]="[5, 10, 25, 100]"
+                            (page)="goToPage($event)" *ngIf="products">
+            </mat-paginator>
+        </div>
+
+        <ul class="product-list" *ngIf="products">
+            <li *ngFor="let productItem of products | paginate: {id: 'pagination_product_listing',
+                            itemsPerPage: pagination.perPage,
+                            currentPage: pagination.currentPage,
+                            totalItems: pagination.totalCount
+                            }">
+                {{productItem.title}}
+            </li>
+        </ul>
+
+
+    </div>
+</mat-card>

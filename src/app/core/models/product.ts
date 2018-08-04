@@ -1,14 +1,14 @@
 export class Product {
 
     // fields
-    public id: number;
+    public id: string;
     public title: string;
     public desc: string;
     public sku: string;
     public price: string;
     public image: string;
 
-    constructor(data){
+    constructor(data) {
         this.id = data._id ? data._id : null;
         this.title = data.title ? data.title : null;
         this.desc = data.desc ? data.desc : null;

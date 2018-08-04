@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
-
-
 
 @Component({
     selector: 'app-products',
@@ -21,7 +20,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     public currentPage = 1;
 
-    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    // MatPaginator Output
+    pageEvent: PageEvent;
+
+    displayedColumns: string[] = ['id', 'title'];
     dataSource = this.products;
 
     constructor(public productService: ProductService) { }
@@ -39,6 +41,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.subProducts = this.productService.getProducts(params)
             .subscribe((res) => {
                this.products = res.data;
+                this.dataSource = this.products;
+
                this.pagination = res.pagination;
                console.log(this.products);
                console.log(this.pagination);
@@ -47,8 +51,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
             });
     }
 
-    goToPage(page: number = 1) {
-        const params = {page: page};
+    goToPage(pageEvent) {
+         console.log(pageEvent);
+        const params = {page: pageEvent ? pageEvent.pageIndex + 1 : 1};
         this.getProducts(params);
     }
 

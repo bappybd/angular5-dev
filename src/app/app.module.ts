@@ -18,6 +18,7 @@ import { HomeComponent } from './core/components/home/home.component';
 import { UserComponent } from './core/components/user/user.component';
 import { UserLoginComponent } from './core/components/user/user-login.component';
 import { UserLogoutComponent } from './core/components/user/user-logout.component';
+import { UserSignupComponent } from './core/components/user/user-signup.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserLogoutComponent } from './core/components/user/user-logout.componen
       UserComponent,
       UserLoginComponent,
       UserLogoutComponent,
+      UserSignupComponent,
       P404Component
   ],
   imports: [

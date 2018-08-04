@@ -26,11 +26,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    var url = environment.apiUrl + '/users/login';
-    /*let formData  = new FormData();
-    formData.append('email', username);
-    formData.append('password', password);*/
-
+    const url = environment.apiUrl + '/users/login';
     const formData = new HttpParams()
         .set('email', username)
         .set('password', password)
@@ -59,6 +55,38 @@ export class AuthenticationService {
       })
       /*.catch(this.handleError)*/;
   }
+
+    signup(formData) {
+        const url = environment.apiUrl + '/users';
+        const data = new HttpParams()
+            .set('username', formData.username)
+            .set('email', formData.email)
+            .set('password', formData.password)
+
+        const options = {
+            headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        };
+
+        return this.http.post<any>(url , data, options )
+            .map(response => {
+                let user: any = [];
+                if (response.user) {
+                    user = response.user;
+
+                    // login successful if there's a jwt token in the response
+                    if (user && user.token) {
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        localStorage.setItem('frontend-token', user.token);
+
+                        this.setLoggedIn(true);
+                    }
+                }
+
+                return response;
+            })
+            /*.catch(this.handleError)*/;
+    }
 
     public getProfile(): Observable<any>{
         const currentUser = localStorage.getItem('currentUser')
