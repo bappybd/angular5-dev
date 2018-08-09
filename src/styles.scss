@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Imports functions, variables, and mixins that are needed by other Bootstrap files
+@import "variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/utilities";
+@import "reset";
+
+.div-container {
+  padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-container > * {
+    width: 100%;
+}
+
+.field-error{
+    color: #f44336;
+    text-align: left;
+}
+
+.my-form-field {
+  display: flex;
+}
+
+/* Bootstrap 4 missing elements CSS */
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  -webkit-appearance: none;
+}
+.alert-dismissible .close {
+  position: relative;
+  top: -.75rem;
+  right: -1.25rem;
+  padding: .75rem 1.25rem;
+  color: inherit;
+}
+.close:focus, .close:hover {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .75;
+}

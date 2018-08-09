@@ -1,41 +1,43 @@
-<br>
-<button mat-raised-button color="primary" routerLink="/products/add">
+<div class="container">
+  <button mat-raised-button color="primary" routerLink="/products/add">
     Add Products
-</button>
-<mat-card>
+  </button>
+  <mat-card>
     <div class="div-container">
 
-        <br>
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
 
-        <div class="mat-elevation-z8">
-            <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                <!-- Position Column -->
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef> ProductID </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-                </ng-container>
+      <div class="mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ProductID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="title">
-                    <mat-header-cell *matHeaderCellDef> Product Name </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-                </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Product Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+          </ng-container>
 
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
 
-            <!-- Pagination -->
-            <mat-paginator  [length]="pagination.totalCount"
-                            [hidePageSize]="true"
-                            [showFirstLastButtons]="true"
-                            [pageSize]="pagination.perPage"
-                            [pageSizeOptions]="[5, 10, 25, 100]"
-                            (page)="goToPage($event)" *ngIf="products">
-            </mat-paginator>
-        </div>
+        <!-- Pagination -->
+        <mat-paginator  [length]="pagination.totalCount"
+                        [hidePageSize]="true"
+                        [showFirstLastButtons]="true"
+                        [pageSize]="pagination.perPage"
+                        [pageSizeOptions]="[5, 10, 25, 100]"
+                        (page)="goToPage($event)" *ngIf="products">
+        </mat-paginator>
+      </div>
     </div>
-</mat-card>
+  </mat-card>
+</div>
+
