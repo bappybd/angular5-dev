@@ -1,26 +1,26 @@
-<div class="container">
-  <div class="alert alert-success" role="alert" *ngIf="alerts.success && alerts.success.length > 0">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <span *ngFor="let alert of alerts.success">{{alert}}</span>
-  </div>
-  <div class="alert alert-info" role="alert" *ngIf="alerts.info && alerts.info.length > 0">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <span *ngFor="let alert of alerts.info">{{alert}}</span>
-  </div>
-  <div class="alert alert-warning" role="alert" *ngIf="alerts.warning && alerts.warning.length > 0">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <span *ngFor="let alert of alerts.warning">{{alert}}</span>
-  </div>
-  <div class="alert alert-danger" role="alert" *ngIf="alerts.errors && alerts.errors.length > 0">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <span *ngFor="let alert of alerts.errors">{{alert}}</span>
-  </div>
+<div class="alert alert-success" role="alert" *ngIf="alerts.success && alerts.success.length > 0">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span *ngFor="let alert of alerts.success">{{alert}}</span>
 </div>
+<div class="alert alert-info" role="alert" *ngIf="alerts.info && alerts.info.length > 0">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span *ngFor="let alert of alerts.info">{{alert}}</span>
+</div>
+<div class="alert alert-warning" role="alert" *ngIf="alerts.warning && alerts.warning.length > 0">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span *ngFor="let alert of alerts.warning">{{alert}}</span>
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="alerts.errors && alerts.errors.length > 0">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.clear()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <span *ngFor="let alert of alerts.errors">{{alert}}</span>
+</div>
+
+

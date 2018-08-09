@@ -1,15 +1,16 @@
-<div class="container">
+<div class="">
   <button mat-raised-button color="primary" routerLink="/products/add">
     Add Products
   </button>
-  <mat-card>
-    <div class="div-container">
+</div>
+<br>
 
-      <br>
+<div class="row">
+  <div class="col-12">
+    <mat-card>
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
-
       <div class="mat-elevation-z8">
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <!-- Position Column -->
@@ -37,7 +38,10 @@
                         (page)="goToPage($event)" *ngIf="products">
         </mat-paginator>
       </div>
-    </div>
-  </mat-card>
+    </mat-card>
+  </div>
+
+
 </div>
+
 
