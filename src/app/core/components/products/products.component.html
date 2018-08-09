@@ -8,9 +8,10 @@
 <div class="row">
   <div class="col-12">
     <mat-card>
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
+
+
+      <input name="term" [formControl]="term" placeholder="Search...">
+
       <div class="mat-elevation-z8">
         <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <!-- Position Column -->

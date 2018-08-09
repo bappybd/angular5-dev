@@ -1,14 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
+import { FormControl } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     selector: 'app-products',
     templateUrl: 'products.component.html'
 })
 export class ProductsComponent implements OnInit, OnDestroy {
+    public term = new FormControl();
     public subProducts: Subscription;
     public products: Product[];
     public pagination: {
@@ -29,8 +33,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
     constructor(public productService: ProductService) { }
 
     ngOnInit() {
-        const params = {page: this.currentPage};
+        const params = {page: this.currentPage, q: this.term.value};
         this.getProducts(params);
+
+        // Bind action for the search filter field
+        this.term.valueChanges
+          .debounceTime(400)
+          .distinctUntilChanged()
+          .subscribe(searchTerm => {
+            this.getProducts({q: this.term.value});
+          });
     }
 
     ngOnDestroy() {

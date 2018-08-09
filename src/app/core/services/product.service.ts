@@ -16,7 +16,12 @@ export class ProductService {
 
   public getProducts(data): Observable<any> {
       let params = new HttpParams();
-      params = params.append('page', data.page);
+      if (data.page) {
+        params = params.append('page', data.page);
+      }
+      if (data.q) {
+        params = params.append('q', data.q);
+      }
 
     return this.http.get<any>(this.urlProducts, {params: params})
         .map(response => {
