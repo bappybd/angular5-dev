@@ -7,9 +7,14 @@ import { CoreModule } from './core/core.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
+
 // Routing Module
 import { AppRouting } from './app-routing.module';
 
+// Custom Directives
+import { HighlightDirective } from './core/directives/highlight.directive';
+
+// Custom components
 import { HeaderComponent } from './core/components/header/header.component';
 import { AlertComponent } from './core/components/alert/alert.component';
 import { ProductsComponent } from './core/components/products/products.component';
@@ -24,6 +29,8 @@ import { UserSignupComponent } from './core/components/user/user-signup.componen
 
 @NgModule({
   declarations: [
+    HighlightDirective,
+
     AppComponent,
     HeaderComponent,
     AlertComponent,
