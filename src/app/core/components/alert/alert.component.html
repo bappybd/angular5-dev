@@ -1,0 +1,7 @@
+<ul *ngIf="alerts.success && alerts.success.length > 0">
+  <li *ngFor="let alert of alerts.success">{{alert}}</li>
+</ul>
+<button mat-button="" (click)="alertService.clear()">Clear Alert</button>
+
+
+<button mat-button="" (click)="setAlert('another messsage')">Set ALert</button>

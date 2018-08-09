@@ -37,17 +37,5 @@
                             (page)="goToPage($event)" *ngIf="products">
             </mat-paginator>
         </div>
-
-        <ul class="product-list" *ngIf="products">
-            <li *ngFor="let productItem of products | paginate: {id: 'pagination_product_listing',
-                            itemsPerPage: pagination.perPage,
-                            currentPage: pagination.currentPage,
-                            totalItems: pagination.totalCount
-                            }">
-                {{productItem.title}}
-            </li>
-        </ul>
-
-
     </div>
 </mat-card>

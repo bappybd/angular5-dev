@@ -1,42 +1,48 @@
+<div class="div-container">
+  <mat-card>
+    <div class="div-container">
+      <mat-toolbar>
+        <mat-toolbar-row *ngIf="formErrors">
+          {{errorMessage}}
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <form class="example-form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" enctype="multipart/form-data">
+        <p class="text-muted">Add a Product</p>
 
-LoggedID: {{isLoggedIn}}
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-        <input matInput placeholder="Company (disabled)" disabled value="Google">
-    </mat-form-field>
-
-    <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="First name">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Long Last Name That Will Be Truncated">
-        </mat-form-field></td>
-    </tr></table>
-
-    <p>
-        <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+        <mat-form-field class="my-form-field">
+          <input matInput placeholder="Product name" [formControl]="myForm.controls['title']">
+          <mat-error *ngIf="formErrors && !formErrors.title.valid">
+            {{formErrors.title.message}}
+          </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Address 2"></textarea>
+        <br>
+        <mat-form-field class="my-form-field">
+          <input type="text" matInput placeholder="Description" [formControl]="myForm.controls['desc']">
+          <mat-error *ngIf="formErrors && !formErrors.desc.valid">
+            {{formErrors.desc.message}}
+          </mat-error>
         </mat-form-field>
-    </p>
+        <br>
 
-    <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="City">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="State">
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
-            <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-        </mat-form-field></td>
-    </tr></table>
+        <mat-form-field class="my-form-field">
+          <input type="text" matInput placeholder="Price" [formControl]="myForm.controls['price']">
+          <mat-error *ngIf="formErrors && !formErrors.price.valid">
+            {{formErrors.price.message}}
+          </mat-error>
+        </mat-form-field>
+        <br>
 
-    <p>
-        <button type="submit" md-raised-button>Submit</button>
-    </p>
-</form>
+
+        <input class="ng-hide" id="input-file-id" [formControl]="myForm.controls['image']" multiple type="file" />
+        <label for="input-file-id" class="mat-form-field mat-raised-button mat-primary">Choose Files</label>
+        <br>
+
+          <button class="mat-form-field" mat-raised-button color="primary" type="submit"
+                  [disabled]="!myForm.valid || submitted == true">Save</button>
+          <i *ngIf="loading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+
+      </form>
+
+    </div>
+  </mat-card>
+</div>

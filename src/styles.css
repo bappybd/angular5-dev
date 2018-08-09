@@ -3,6 +3,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .div-container {
+  padding: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -14,4 +15,8 @@
 .field-error{
     color: #f44336;
     text-align: left;
+}
+
+.my-form-field {
+  display: flex;
 }

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from '../auth.guard';
 import { AuthenticationService } from './services/authentication.service';
 import { ProductService } from './services/product.service';
+import { AlertService } from './services/alert.service';
 
 // Components
 
@@ -30,7 +31,8 @@ import { ProductService } from './services/product.service';
     providers: [
         AuthGuard,
         AuthenticationService,
-        ProductService
+        ProductService,
+        AlertService
     ]
 })
 export class CoreModule {

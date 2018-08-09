@@ -13,7 +13,7 @@ import { UserSignupComponent } from './core/components/user/user-signup.componen
 export const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'products', component: ProductsComponent},
-  { path: 'products/add', component: ProductsAddComponent},
+  { path: 'products/add', component: ProductsAddComponent, canActivate: [AuthGuard]},
   { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
     { path: 'user/login', component: UserLoginComponent},
     { path: 'user/logout', component: UserLogoutComponent},

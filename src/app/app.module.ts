@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRouting } from './app-routing.module';
 
 import { HeaderComponent } from './core/components/header/header.component';
+import { AlertComponent } from './core/components/alert/alert.component';
 import { ProductsComponent } from './core/components/products/products.component';
 import { ProductsAddComponent } from './core/components/products/products-add.component';
 import { P404Component } from './core/components/404/404.component';
@@ -25,14 +26,15 @@ import { UserSignupComponent } from './core/components/user/user-signup.componen
   declarations: [
     AppComponent,
     HeaderComponent,
+    AlertComponent,
     ProductsComponent,
-      ProductsAddComponent,
-      HomeComponent,
-      UserComponent,
-      UserLoginComponent,
-      UserLogoutComponent,
-      UserSignupComponent,
-      P404Component
+    ProductsAddComponent,
+    HomeComponent,
+    UserComponent,
+    UserLoginComponent,
+    UserLogoutComponent,
+    UserSignupComponent,
+    P404Component
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MaterialAppModule, CoreModule, NgxPaginationModule, AppRouting

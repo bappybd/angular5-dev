@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Product } from '../models/product';
@@ -28,6 +28,24 @@ export class ProductService {
           } ;
         })
         /*.catch(this.handleError)*/;
+  }
+
+  public createProducts(data): Observable<any> {
+    const url = environment.apiUrl + '/products';
+    const formData = new HttpParams()
+      .set('title', data.title)
+      .set('desc', data.desc)
+      .set('price', data.price)
+
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+
+    return this.http.post<any>(url, formData, options)
+      .map(response => {
+        return response ;
+      });
+      /*.catch(this.handleError)*/;
   }
 
   private handleError(error: any, res) {
